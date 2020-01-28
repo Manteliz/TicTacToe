@@ -1,14 +1,19 @@
 var canvas = document.getElementById("canvasGame");
 var canvasContext = canvas.getContext('2d');
 
-drawBoard();
+window.onload = function(){
+    drawBoard();
 
-/*
-var X = document.getElementById('X');
-var O = document.getElementById('O');
-canvasContext.drawImage(X, 200, 200);
-*/
+    // draw symbol
+    var X = document.getElementById('X');
+    var O = document.getElementById('O');
+    var pictureWidth = canvas.width/4;
+    var pictureHeight = canvas.height/4;
+    var dx = (canvas.width/3 - pictureWidth)/2;
+    var dy = (canvas.height/3 - pictureHeight)/2;
+    canvasContext.drawImage(O, 2*canvas.width/3+dx , 2*canvas.height/3+dy, pictureWidth, pictureHeight);
 
+};
 
 function drawBoard(){
     //draws the outer border

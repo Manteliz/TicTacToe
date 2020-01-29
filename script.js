@@ -4,15 +4,6 @@ var canvasContext = canvas.getContext('2d');
 window.onload = function(){
     drawBoard();
 
-    // draw symbol
-    var X = document.getElementById('X');
-    var O = document.getElementById('O');
-    var pictureWidth = canvas.width/4;
-    var pictureHeight = canvas.height/4;
-    var dx = (canvas.width/3 - pictureWidth)/2;
-    var dy = (canvas.height/3 - pictureHeight)/2;
-    canvasContext.drawImage(O, 2*canvas.width/3+dx , 2*canvas.height/3+dy, pictureWidth, pictureHeight);
-
 };
 
 function drawBoard(){
@@ -36,22 +27,31 @@ function drawBoard(){
 }
 
 
-//creating a board object. If the region is empty then it's value will be null, if it stores O --> value = 0, if X --> value = 1
+//creating a board object. If the region is empty then it's value will be null
 var board = {
-    box1: null,
-    box2: null,
-    box3: 0,
-    box4: null,
-    box5: 1,
-    box6: null,
-    box7: null,
-    box8: null,
-    box9: null,
+
+    boxes : [null, null, 'O', null, 'X', null, null, null, null],
+
     drawBoard: function(){
-        //draws the X's and the O's
-
-
+       for( i=0; i < 9; i++){
+            if(this.boxes[i] != null){
+                drawSymbol(boxes[i], i);
+            }
+       }
     }
+}
+
+function drawSymbol(symbol, boxNumber){
+        // draw symbol example
+
+        var X = document.getElementById('X');
+        var O = document.getElementById('O');
+        var pictureWidth = canvas.width/4;
+        var pictureHeight = canvas.height/4;
+        var dx = (canvas.width/3 - pictureWidth)/2;
+        var dy = (canvas.height/3 - pictureHeight)/2;
+        canvasContext.drawImage(O, 2*canvas.width/3+dx , 2*canvas.height/3+dy, pictureWidth, pictureHeight);
+
 }
 
 /*

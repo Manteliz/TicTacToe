@@ -29,15 +29,26 @@ window.onload = function(){
                 board.drawSymbols();
                 counter++;
                 checkIfSomebodyWon();
+                checkIfAllBoxesAreTaken();
             }           
         }else{
             //reset the game
             finished = false;
-            
+            canvasContext.clearRect(0,0, canvas.width, canvas.height);
+            drawBoard();
+            board.boxes = [null, null, null, null, null, null, null, null, null];
         }
     });
 
 };
+
+function checkIfAllBoxesAreTaken(){
+
+    if(board.boxes[0]!==null && board.boxes[1]!==null && board.boxes[2]!==null && board.boxes[3]!==null && board.boxes[4]!==null && board.boxes[5]!==null && board.boxes[6]!==null && board.boxes[7]!==null && board.boxes[8]!==null){
+        finished = true;
+    }
+
+}
 
 function checkIfSomebodyWon(){
 
